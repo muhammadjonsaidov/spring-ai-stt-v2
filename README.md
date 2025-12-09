@@ -2,7 +2,7 @@
 
 A robust Spring Boot application implementing the **Strategy Pattern** to perform **Speech-to-Text (STT)** conversion using **Groq (Whisper)**, **Google Gemini**, and **ElevenLabs**.
 
-> **Repo:** [spring-ai-stt-v2](https://github.com/muhammadjonsaidov/spring-ai-stt-v2)
+> **Repo V1:** [spring-ai-stt](https://github.com/muhammadjonsaidov/spring-ai-stt)
 
 ## 🚀 Key Features
 - **Groq (whisper-large-v3-turbo):** Specifically optimized for **Uzbek, Russian, and English** mixed audio contexts with strict temperature settings.
