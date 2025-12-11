@@ -1,7 +1,9 @@
 package com.salesdoctor.audiotranscriberai.controller;
 
+import com.salesdoctor.audiotranscriberai.dto.ModelsResponse;
 import com.salesdoctor.audiotranscriberai.dto.TranscriptionRequest;
 import com.salesdoctor.audiotranscriberai.dto.TranscriptionResponse;
+import com.salesdoctor.audiotranscriberai.enums.AiModelType;
 import com.salesdoctor.audiotranscriberai.service.strategyInterface.TranscriptionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -12,8 +14,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/voice/upload")
+@RequestMapping("/api")
 @CrossOrigin(originPatterns = "*")
 public class TranscriptionController {
 
@@ -50,7 +54,7 @@ public class TranscriptionController {
                     )
             )
     })
-    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/voice/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> transcribe(@ModelAttribute TranscriptionRequest requestDto) {
 
         if (requestDto.getFile() == null || requestDto.getFile().isEmpty()) {
@@ -66,5 +70,28 @@ public class TranscriptionController {
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body("Processing error: " + e.getMessage());
         }
+    }
+
+    @Operation(
+            summary = "Get AI Models",
+            description = "Returns all available AI model types for frontend selection."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Successfully returned model list",
+                    content = @Content(
+                            mediaType = MediaType.APPLICATION_JSON_VALUE,
+                            schema = @Schema(implementation = ModelsResponse.class)
+                    )
+            )
+    })
+    @GetMapping("/ai/models")
+    public ResponseEntity<ModelsResponse> getModels() {
+        List<String> modelNames = List.of(AiModelType.values()).stream()
+                .map(Enum::name)
+                .toList();
+        ModelsResponse response = new ModelsResponse(modelNames);
+        return ResponseEntity.ok(response);
     }
 }

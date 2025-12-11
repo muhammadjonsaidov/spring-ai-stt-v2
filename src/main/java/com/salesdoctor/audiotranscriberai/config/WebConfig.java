@@ -17,7 +17,6 @@ public class WebConfig {
                 registry.addMapping("/**") // Barcha yo'llar uchun
                         .allowedOriginPatterns("*") // Barcha manbalar uchun
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Barcha metodlar
-                        .allowedHeaders("*")
                         .allowCredentials(true); // Agar cookie/token yuborilsa kerak bo'ladi
             }
         };
