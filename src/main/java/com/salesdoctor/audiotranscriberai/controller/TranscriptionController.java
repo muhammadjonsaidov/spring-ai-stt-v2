@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/transcribe")
+@RequestMapping("/api/voice/upload")
 @CrossOrigin(originPatterns = "*")
 public class TranscriptionController {
 
