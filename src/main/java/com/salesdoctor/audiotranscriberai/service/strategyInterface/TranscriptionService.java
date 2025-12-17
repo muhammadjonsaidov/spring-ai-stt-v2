@@ -24,7 +24,7 @@ public class TranscriptionService {
         try {
             type = AiModelType.fromString(modelName);
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("Unsupported model. Available: GEMINI, ELEVENLABS, GROQ, ASSEMBLY");
+            throw new IllegalArgumentException("Unsupported model. Available: GEMINI, ELEVENLABS, GROQ, ASSEMBLY, YANDEX");
         }
 
         TranscriptionStrategy strategy = strategyMap.get(type);

@@ -56,7 +56,6 @@ public class AssemblyModelService implements TranscriptionStrategy {
                 .retrieve()
                 .body(String.class);
 
-        // Response: { "upload_url": "https://cdn.assemblyai.com/..." }
         return objectMapper.readTree(response).path("upload_url").asText();
     }
 
@@ -64,7 +63,6 @@ public class AssemblyModelService implements TranscriptionStrategy {
         Map<String, Object> body = new HashMap<>();
         body.put("audio_url", audioUrl);
         body.put("language_detection", true);
-        // body.put("language_code", "en");
         body.put("punctuate", true);
         body.put("format_text", true);
 
@@ -76,7 +74,6 @@ public class AssemblyModelService implements TranscriptionStrategy {
                 .retrieve()
                 .body(String.class);
 
-        // Response: { "id": "ramdom-id-123", "status": "queued", ... }
         return objectMapper.readTree(response).path("id").asText();
     }
 

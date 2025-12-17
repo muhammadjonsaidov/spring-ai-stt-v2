@@ -4,7 +4,8 @@ public enum AiModelType {
     GEMINI,
     ELEVENLABS,
     GROQ,
-    ASSEMBLY;
+    ASSEMBLY,
+    YANDEX;
 
 
     public static AiModelType fromString(String modelName) {

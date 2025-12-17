@@ -36,3 +36,7 @@ spring:
     assemblyai:
       api-key: ${ASSEMBLY_API_KEY}
       base-url: "https://api.assemblyai.com/v2"
+
+    yandex:
+      api-key: ${YANDEX_API_KEY}
+      base-url: https://stt.api.cloud.yandex.net/speech/v1/stt:recognize

@@ -14,10 +14,10 @@ public class WebConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(@NotNull CorsRegistry registry) {
-                registry.addMapping("/**") // Barcha yo'llar uchun
-                        .allowedOriginPatterns("*") // Barcha manbalar uchun
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Barcha metodlar
-                        .allowCredentials(true); // Agar cookie/token yuborilsa kerak bo'ladi
+                registry.addMapping("/**")
+                        .allowedOriginPatterns("*")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowCredentials(true);
             }
         };
     }

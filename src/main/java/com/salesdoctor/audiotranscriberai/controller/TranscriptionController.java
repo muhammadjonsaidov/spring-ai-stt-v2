@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("/api")
@@ -88,7 +89,7 @@ public class TranscriptionController {
     })
     @GetMapping("/ai/models")
     public ResponseEntity<ModelsResponse> getModels() {
-        List<String> modelNames = List.of(AiModelType.values()).stream()
+        List<String> modelNames = Stream.of(AiModelType.values())
                 .map(Enum::name)
                 .toList();
         ModelsResponse response = new ModelsResponse(modelNames);

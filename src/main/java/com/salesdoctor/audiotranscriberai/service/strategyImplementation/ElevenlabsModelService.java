@@ -47,7 +47,7 @@ public class ElevenlabsModelService implements TranscriptionStrategy {
             body.add("language_code", "uz");
 
             String response = restClient.post()
-                    .uri(baseUrl + "/speech-to-text") // Base URL + endpoint
+                    .uri(baseUrl + "/speech-to-text")
                     .header("xi-api-key", apiKey)
                     .contentType(MediaType.MULTIPART_FORM_DATA)
                     .body(body)
