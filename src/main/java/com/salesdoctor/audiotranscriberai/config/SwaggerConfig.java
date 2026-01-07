@@ -15,7 +15,8 @@ public class SwaggerConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .servers(List.of(
-                        new Server().url("https://1d7035b3ccd8.ngrok-free.app")
+                        new Server().url("http://localhost:8080").description("Local server"),
+                        new Server().url("https://4752e85c2495.ngrok-free.app/").description("Ngrok server")
                 ))
                 .info(new Info()
                         .title("STT API")

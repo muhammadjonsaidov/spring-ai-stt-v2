@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/voice")
 @CrossOrigin(originPatterns = "*")
 public class TranscriptionController {
 
@@ -55,7 +55,7 @@ public class TranscriptionController {
                     )
             )
     })
-    @PostMapping(value = "/voice/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> transcribe(@ModelAttribute TranscriptionRequest requestDto) {
 
         if (requestDto.getFile() == null || requestDto.getFile().isEmpty()) {
@@ -87,7 +87,7 @@ public class TranscriptionController {
                     )
             )
     })
-    @GetMapping("/ai/models")
+    @GetMapping("/models")
     public ResponseEntity<ModelsResponse> getModels() {
         List<String> modelNames = Stream.of(AiModelType.values())
                 .map(Enum::name)
